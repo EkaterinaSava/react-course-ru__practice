@@ -1,0 +1,14 @@
+{
+  "name": "react-course-ru__practice",
+  "version": "1.0.0",
+  "description": "Based on 'React RU tutorial' by Maxim Patsianskiy",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Ekaterina Sava",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.14.0"
+  }
+}
