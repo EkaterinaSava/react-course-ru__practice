@@ -1,8 +1,3 @@
-// ReactDOM.render(
-//   <h1>Hello, world!</h1>,
-//   document.getElementById('root')
-// );
-
 var newsList = [
   {
     author: 'Travis Levius, CNN',
@@ -65,7 +60,6 @@ var Article = React.createClass ({
 
         {/* для большого текста: не показывать текст, если visible === false */}
         <p className={'news__full-text ' + (visible ? '': 'none')}>{fullText}</p>
-        <hr />
       </div>
     )
   }
@@ -106,13 +100,15 @@ var News = React.createClass ({
     // console.log(newsItem);
 
     return (
-      <div className="news">
+      <div className='news'>
         {newsItem}
-        <strong
-          className={'news__count ' + (data.length > 0 ? '':'none') }
-          onClick={this.newsCounterClick}>
-            News: {data.length}
-        </strong>
+        <div className='news__counter'>
+          <strong
+            className={'news__counter-inner ' + (data.length > 0 ? '':'none') }
+            onClick={this.newsCounterClick}>
+              News: {data.length}
+          </strong>
+        </div>
       </div>
     );
   }
@@ -152,10 +148,9 @@ var TestInput = React.createClass ({
 var App = React.createClass ({
   render: function() {
     return (
-      <div className="app">
-        <h3>News feed:</h3>
+      <div className={'app ' + 'news__inner'}>
+        <h3>News feed</h3>
         <TestInput />
-        <hr />
         <News data={newsList} />
         {/*<News data={newsList} />добавили свойство data */}
         {/*<Comments />*/}
