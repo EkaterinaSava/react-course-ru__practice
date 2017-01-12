@@ -123,24 +123,39 @@ var News = React.createClass ({
 // });
 
 var TestInput = React.createClass ({
-  getInitialState: function() {
-    return {
-      myValue: ''
-    }
+  // getInitialState: function() {
+  //   return {
+  //     myValue: ''
+  //   }
+  // },
+  // onChangeHandler: function(e) {
+  //   this.setState ({
+  //     myValue: e.target.value
+  //   })
+  // },
+  componentDidMount: function() { //ставим фокус в input
+    ReactDOM.findDOMNode(this.refs.myTestInput).focus();
   },
-  onChangeHandler: function(e) {
-    this.setState ({
-      myValue: e.target.value
-    })
+  onBtnClickHandler: function() {
+    // console.log(this.refs);
+    alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
   },
   render: function() {
     return (
-      <input
-        className='test-input'
-        value={this.state.myValue}
-        onChange={this.onChangeHandler}
-        placeholder='Search'
-      />
+      <div>
+        <input
+          className='test-input'
+          defaultValue=''
+          ref='myTestInput'
+          placeholder='Enter some value'
+        />
+        <button
+          type='submit'
+          onClick={this.onBtnClickHandler}
+          ref='alert-btn'>
+          show alert vith value
+        </button>
+      </div>
     );
   }
 });
