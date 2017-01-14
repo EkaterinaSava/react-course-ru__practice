@@ -1,6 +1,9 @@
 *, *:before, *:after {
   box-sizing: inherit;
 }
+input, textarea, select {
+  box-sizing: border-box;
+}
 
 body {
   color: #000;
@@ -22,6 +25,11 @@ body {
 
 main {
   position: relative;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .news {
@@ -62,6 +70,39 @@ main {
 
 }
 
+/*** add news section ***/
+.news-add__form {
+  padding: 20px;
+  border: 1px solid rgba(0,0,0,.15);
+}
+.news-add__textarea {
+  width: 100%;
+  min-height: 125px;
+  font-size: 12px;
+  padding: 15px 20px;
+}
+.news-add__check-rules {
+  display: block;
+  font-size: 11px;
+  color: #6f6f6f;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.news-add__btn {
+  min-width: 185px;
+  margin-top: 20px;
+  height: 26px;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 0;
+  border: 2px solid rgba(0,0,0,.45);
+  text-align: center;
+  text-transform: uppercase;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/*** helpers ***/
 .none {
   display: none !important;
 }

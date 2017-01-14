@@ -114,48 +114,38 @@ var News = React.createClass ({
   }
 });
 
-// var Comments = React.createClass ({
-//   render: function() {
-//     return (
-//       <div className="comments">Comments will be here</div>
-//     );
-//   }
-// });
-
-var TestInput = React.createClass ({
-  // getInitialState: function() {
-  //   return {
-  //     myValue: ''
-  //   }
-  // },
-  // onChangeHandler: function(e) {
-  //   this.setState ({
-  //     myValue: e.target.value
-  //   })
-  // },
+var Add = React.createClass ({
   componentDidMount: function() { //ставим фокус в input
     ReactDOM.findDOMNode(this.refs.myTestInput).focus();
   },
-  onBtnClickHandler: function() {
+  onBtnClickHandler: function(e) {
     // console.log(this.refs);
-    alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
+    // alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
+    e.preventDefault();
   },
   render: function() {
     return (
-      <div>
-        <input
-          className='test-input'
+      <form className='news-add__form'>
+        <textarea className=''
+          className='news-add__textarea'
           defaultValue=''
           ref='myTestInput'
-          placeholder='Enter some value'
-        />
+          placeholder='Enter some text'></textarea>
+        <label className='news-add__check-rules'>
+          <input
+            type='checkbox'
+            defaultChecked={false}
+            refs='checkrules'/>
+          I'm agree with rules
+        </label>
         <button
           type='submit'
+          className='news-add__btn'
           onClick={this.onBtnClickHandler}
           ref='alert-btn'>
-          show alert vith value
+          Add news (show alert with text)
         </button>
-      </div>
+      </form>
     );
   }
 });
@@ -164,11 +154,10 @@ var App = React.createClass ({
   render: function() {
     return (
       <div className={'app ' + 'news__inner'}>
+        <h3>Add news</h3>
+        <Add />
         <h3>News feed</h3>
-        <TestInput />
         <News data={newsList} />
-        {/*<News data={newsList} />добавили свойство data */}
-        {/*<Comments />*/}
       </div>
     );
   }
