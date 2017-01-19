@@ -115,35 +115,79 @@ var News = React.createClass ({
 });
 
 var Add = React.createClass ({
+  getInitialState: function() { // начальное состояние
+    return {
+      rulesAgreeNotChecked: true,
+      authorIsEmpty: true,
+      textIsEmpty: true
+    }
+  },
   componentDidMount: function() { //ставим фокус в input
-    ReactDOM.findDOMNode(this.refs.myTestInput).focus();
+    ReactDOM.findDOMNode(this.refs.news_author).focus();
+  },
+  onAuthorChange: function(e) {
+    if (e.target.value.trim().length > 0) {
+      this.setState({authorIsEmpty: false})
+    }
+    else {
+      this.setState({authorIsEmpty: true})
+    }
+   },
+  onTextChange: function(e) {
+    if (e.target.value.trim().length > 0) {
+      this.setState({textIsEmpty: false})
+    }
+    else {
+      this.setState({textIsEmpty: true})
+    }
   },
   onBtnClickHandler: function(e) {
     // console.log(this.refs);
     // alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
     e.preventDefault();
+    var author = ReactDOM.findDOMNode(this.refs.news_author).value;
+    var text = ReactDOM.findDOMNode(this.refs.news_text).value;
+    alert(author + '\n' + text);
+  },
+  onCheckRulesClick: function() {
+    // ReactDOM.findDOMNode(this.refs.alert_btn).disabled = !e.target.checked;
+    this.setState({
+      rulesAgreeNotChecked: !this.state.rulesAgreeNotChecked
+    });
   },
   render: function() {
+    var rulesAgreeNotChecked = this.state.rulesAgreeNotChecked,
+        authorIsEmpty = this.state.authorIsEmpty,
+        textIsEmpty = this.state.textIsEmpty;
     return (
       <form className='news-add__form'>
-        <textarea className=''
+        <input
+          type='text'
+          className='news-add__author'
+          placeholder='My name is...'
+          onChange={this.onAuthorChange}
+          ref='news_author' />
+        <textarea
           className='news-add__textarea'
-          defaultValue=''
-          ref='myTestInput'
-          placeholder='Enter some text'></textarea>
+          onChange={this.onTextChange}
+          ref='news_text'
+          placeholder='My awesome text for the post'></textarea>
         <label className='news-add__check-rules'>
           <input
             type='checkbox'
-            defaultChecked={false}
-            refs='checkrules'/>
-          I'm agree with rules
+            ref='checkrules'
+            onChange={this.onCheckRulesClick}/>
+          I certainly agree with the rules
         </label>
+
+        {/* берем значение для disabled из state */}
         <button
           type='submit'
           className='news-add__btn'
           onClick={this.onBtnClickHandler}
-          ref='alert-btn'>
-          Add news (show alert with text)
+          ref='alert_btn'
+          disabled={rulesAgreeNotChecked || authorIsEmpty || textIsEmpty}>
+          Add my cool news (show alert with text)
         </button>
       </form>
     );

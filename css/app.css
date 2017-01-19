@@ -72,34 +72,55 @@ h1, h2, h3, h4, h5, h6 {
 
 /*** add news section ***/
 .news-add__form {
-  padding: 20px;
-  border: 1px solid rgba(0,0,0,.15);
+  padding: 16px;
+  border: 1px solid rgba(0,0,0,.05);
+}
+.news-add__author {
+  width: 100%;
+  height: 32px;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(0,0,0,.25);
+  outline: none;
+  cursor: text;
 }
 .news-add__textarea {
   width: 100%;
-  min-height: 125px;
+  min-height: 128px;
   font-size: 12px;
-  padding: 15px 20px;
+  padding: 8px 16px;
+  border: 1px solid rgba(0,0,0,.25);
+  outline: none;
+  cursor: text;
 }
 .news-add__check-rules {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   color: #6f6f6f;
-  margin-top: 10px;
+  margin-top: 16px;
   cursor: pointer;
 }
+.news-add__check-rules input[type='checkbox'] {
+  margin-right: 8px;
+}
 .news-add__btn {
-  min-width: 185px;
-  margin-top: 20px;
-  height: 26px;
+  min-width: 264px;
+  margin-top: 16px;
+  height: 24px;
   font-size: 10px;
   font-weight: 600;
   border-radius: 0;
-  border: 2px solid rgba(0,0,0,.45);
+  border: 1px solid rgba(0,0,0,.25);
   text-align: center;
   text-transform: uppercase;
   background-color: transparent;
   cursor: pointer;
+}
+.news-add__btn:disabled {
+  opacity: .55;
+  cursor: default;
 }
 
 /*** helpers ***/
