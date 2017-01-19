@@ -133,24 +133,13 @@ var Add = React.createClass ({
       this.setState({[fieldName]: true})
     }
    },
-  // onTextChange: function(e) {
-  //   if (e.target.value.trim().length > 0) {
-  //     this.setState({textIsEmpty: false})
-  //   }
-  //   else {
-  //     this.setState({textIsEmpty: true})
-  //   }
-  // },
   onBtnClickHandler: function(e) {
-    // console.log(this.refs);
-    // alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
     e.preventDefault();
     var author = ReactDOM.findDOMNode(this.refs.news_author).value;
     var text = ReactDOM.findDOMNode(this.refs.news_text).value;
     alert(author + '\n' + text);
   },
   onCheckRulesClick: function() {
-    // ReactDOM.findDOMNode(this.refs.alert_btn).disabled = !e.target.checked;
     this.setState({
       rulesAgreeNotChecked: !this.state.rulesAgreeNotChecked
     });
