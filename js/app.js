@@ -125,22 +125,22 @@ var Add = React.createClass ({
   componentDidMount: function() { //ставим фокус в input
     ReactDOM.findDOMNode(this.refs.news_author).focus();
   },
-  onAuthorChange: function(e) {
+  onFieldChange: function(fieldName, e) {
     if (e.target.value.trim().length > 0) {
-      this.setState({authorIsEmpty: false})
+      this.setState({[fieldName]: false})
     }
     else {
-      this.setState({authorIsEmpty: true})
+      this.setState({[fieldName]: true})
     }
    },
-  onTextChange: function(e) {
-    if (e.target.value.trim().length > 0) {
-      this.setState({textIsEmpty: false})
-    }
-    else {
-      this.setState({textIsEmpty: true})
-    }
-  },
+  // onTextChange: function(e) {
+  //   if (e.target.value.trim().length > 0) {
+  //     this.setState({textIsEmpty: false})
+  //   }
+  //   else {
+  //     this.setState({textIsEmpty: true})
+  //   }
+  // },
   onBtnClickHandler: function(e) {
     // console.log(this.refs);
     // alert(ReactDOM.findDOMNode(this.refs.myTestInput).value);
@@ -165,11 +165,11 @@ var Add = React.createClass ({
           type='text'
           className='news-add__author'
           placeholder='My name is...'
-          onChange={this.onAuthorChange}
+          onChange={this.onFieldChange.bind(this, 'authorIsEmpty')}
           ref='news_author' />
         <textarea
           className='news-add__textarea'
-          onChange={this.onTextChange}
+          onChange={this.onFieldChange.bind(this, 'textIsEmpty')}
           ref='news_text'
           placeholder='My awesome text for the post'></textarea>
         <label className='news-add__check-rules'>
